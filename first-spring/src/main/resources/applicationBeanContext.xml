@@ -4,9 +4,16 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- bean definitions here -->
-    < id="myBean" class="com.huzaifa.demo.GreetingService"/>
+    <!-- Greeting Service -->
+    <bean id="myBean" class="com.huzaifa.demo.GreetingService"/>
 
-    <bean id="NotificationService" class="com.huzaifa.loosecoupling.NotificationService"/>
+    <!-- Notification Service implementation -->
+    <bean id="notificationService" class="com.huzaifa.loosecoupling.NotificationService"/>
+
+    <!-- UserService DI using setter injection -->
+    <bean id="userService" class="com.huzaifa.demo.UserService">
+        <property name="notificationService" ref="NotificationService"/>
+    </bean>
+
 
 </beans>

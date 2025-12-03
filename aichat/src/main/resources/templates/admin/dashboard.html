@@ -1,0 +1,14 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><title>Admin</title></head>
+<body>
+  <h2>Admin Dashboard</h2>
+  <a th:href="@{/logout}">Logout</a>
+  <h3>Users</h3>
+  <ul><li th:each="u : ${users}" th:text="${u.username} + ' ' + ${u.roles}"></li></ul>
+  <h3>All Chats</h3>
+  <div th:each="c : ${chats}">
+    <p><b th:text="${c.user.username} + ' @ ' + ${#dates.format(c.createdAt,'dd-MMM-yyyy HH:mm')}"></b></p>
+    <p>Q: <span th:text="${c.userMessage}"/></p>
+    <p>A: <span th:text="${c.aiResponse}"/></p><hr/>
+  </div>
+</body></html>
+		
